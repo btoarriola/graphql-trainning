@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: graphql-adsoftsito
+  name: graphql-btoarriola
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: graphql-adsoftsito
+      app: graphql-btoarriola
   template:
     metadata:
       labels:
-        app: graphql-adsoftsito
+        app: graphql-btoarriola
     spec:
       containers:
-      - image: okteto.dev/graphql-adsoftsito:latest
-        name: adsoftsito
-        envFrom:
-        - configMapRef:
-            name: adsoftsito-config
+      - image: okteto.dev/btoarriola:latest
+        name: btoarriola
+        #envFrom:
+        #- configMapRef:
+        #    name: btoarriola-config
         livenessProbe:
           httpGet:
             path: /ht/
@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: graphql-adsoftsito
+  name: graphql-btoarriola
   annotations:
     dev.okteto.com/auto-ingress: "true"
 spec:
   type: ClusterIP  
   ports:
-  - name: "graphql-adsoftsito"
+  - name: "graphql-btoarriola"
     port: 8080
   selector:
-    app: graphql-adsoftsito
+    app: graphql-btoarriola
